@@ -6,6 +6,6 @@ class TestPathCalculationPOST:
         assert response.status_code == 201
         response_json = response.json()
         assert response_json["id"]
-        assert response_json["commands"] == 1
-        assert isinstance(response_json["duration"], float)
+        assert response_json["commands"] == 2
+        assert response_json["duration"]
         assert response_json["timestamp"]

@@ -1,8 +1,12 @@
+import time
 from datetime import datetime
 from flask import request, make_response
 
 from app.cleaning_robot.database import session_context
 from app.cleaning_robot.path_calculation.models import PathCalculationExecution
+from app.cleaning_robot.path_calculation.robot_cleaning_simulator import (
+    RobotCleaningSimulator,
+)
 
 
 def post_path_calculation():
@@ -18,6 +22,14 @@ def post_path_calculation():
         result=0,
         duration=0,
     )
+
+    start = time.time()
+    robot_cleaning_simulator = RobotCleaningSimulator(path=robot_path)
+    places = robot_cleaning_simulator.get_unique_places()
+    end = time.time()
+    path_calculation.result = places
+    path_calculation.duration = end - start
+
     with session_context() as session:
         session.add(path_calculation)
         session.commit()

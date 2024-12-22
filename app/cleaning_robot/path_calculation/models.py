@@ -24,5 +24,5 @@ class PathCalculationExecution(Base):
             "timestamp": self.timestamp.isoformat(),
             "commands": self.commands,
             "result": self.result,
-            "duration": self.duration,
+            "duration": '{:.6f}'.format(self.duration),
         }
