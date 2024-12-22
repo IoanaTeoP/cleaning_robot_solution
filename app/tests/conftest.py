@@ -2,7 +2,13 @@ import pytest
 from app.cleaning_robot.main import create_app
 from app.cleaning_robot.database import session_context
 from app.cleaning_robot.path_calculation.models import PathCalculationExecution
-from app.tests.fixtures import simple_robot_path  # noqa
+from app.tests.fixtures import (  # noqa
+    simple_robot_path,
+    with_negative_integers_robot_path,
+    with_zero_steps_robot_path,
+    with_loop_robot_path,
+    one_complex_robot_path
+)
 
 
 @pytest.fixture()

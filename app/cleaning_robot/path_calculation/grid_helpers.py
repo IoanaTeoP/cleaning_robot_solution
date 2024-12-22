@@ -27,8 +27,15 @@ def get_next_place(place_on_grid: PlaceOnGrid, direction: Direction) -> PlaceOnG
             x=place_on_grid.x + 1,
             y=place_on_grid.y,
         )
-    elif direction == Direction.east:
+    elif direction == Direction.west:
         return PlaceOnGrid(
             x=place_on_grid.x - 1,
             y=place_on_grid.y,
         )
+
+
+def check_limits(place_on_grid: PlaceOnGrid):
+    return (
+            -100_000 < place_on_grid.x < 100_000 and
+            -100_000 < place_on_grid.y < 100_000
+    )
