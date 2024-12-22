@@ -8,7 +8,7 @@ servers:
   - url: "/api"
 
 paths:
-  /path_calculation:
+  /tibber-developer-test/enter-path:
     post:
       operationId: "app.cleaning_robot.path_calculation.api.post_path_calculation"
       tags:

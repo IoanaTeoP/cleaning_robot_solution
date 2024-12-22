@@ -16,10 +16,10 @@ def post_path_calculation():
         timestamp=datetime.now(),
         commands=len(robot_path["commands"]),
         result=0,
-        duration=0
+        duration=0,
     )
     with session_context() as session:
         session.add(path_calculation)
+        session.commit()
 
-    return make_response(path_calculation.as_dict(), 201)
-
+        return make_response(path_calculation.as_dict(), 201)

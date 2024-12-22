@@ -1,7 +1,8 @@
+import pytest
 from app.cleaning_robot.main import create_app
 from app.cleaning_robot.database import session_context
 from app.cleaning_robot.path_calculation.models import PathCalculationExecution
-from app.tests.fixtures import *  # noqa
+from app.tests.fixtures import simple_robot_path  # noqa
 
 
 @pytest.fixture()

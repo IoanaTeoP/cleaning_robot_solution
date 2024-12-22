@@ -19,6 +19,8 @@ def init_db():
     if not database_exists(engine.url):
         create_database(engine.url)
 
-    from app.cleaning_robot.path_calculation.models import PathCalculationExecution # noqa
+    from app.cleaning_robot.path_calculation.models import (  # noqa
+        PathCalculationExecution,
+    )
 
     Base.metadata.create_all(bind=engine)
