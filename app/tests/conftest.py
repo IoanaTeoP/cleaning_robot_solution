@@ -7,7 +7,8 @@ from app.tests.fixtures import (  # noqa
     with_negative_integers_robot_path,
     with_zero_steps_robot_path,
     with_loop_robot_path,
-    one_complex_robot_path
+    one_complex_robot_path,
+    memory_load_robot_path,
 )
 
 

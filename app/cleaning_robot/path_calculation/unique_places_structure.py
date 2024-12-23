@@ -1,10 +1,20 @@
-class UniquePlacesStructure:
+from collections import defaultdict
+from app.cleaning_robot.path_calculation.grid_helpers import PlaceOnGrid
+
+
+class UniquePlacesStructureDict:
 
     def __init__(self):
-        self.in_memory_set = set()
+        self.in_memory_struct = defaultdict(list)
 
     def __len__(self):
-        return len(self.in_memory_set)
+        total_len = 0
+        for x, y in self.in_memory_struct.items():
+            total_len += len(set(y))
+        return total_len
 
-    def add(self, element):
-        self.in_memory_set.add(element)
+    def add(self, element: PlaceOnGrid):
+        self.in_memory_struct[element.x].append(element.y)
+
+
+UniquePlacesStructure = UniquePlacesStructureDict

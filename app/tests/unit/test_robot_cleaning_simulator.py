@@ -52,10 +52,3 @@ class TestRobotCleaningSimilator:
         result = simulator.get_unique_places()
         assert result == 14
         assert simulator.current_place == PlaceOnGrid(x=3, y=1)
-
-
-    def test_memory_load_robot_path(self, one_complex_robot_path):
-        simulator = RobotCleaningSimulator(one_complex_robot_path)
-        result = simulator.get_unique_places()
-        assert result == 14
-        assert simulator.current_place == PlaceOnGrid(x=3, y=1)

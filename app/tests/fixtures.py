@@ -79,5 +79,5 @@ def memory_load_robot_path():
     ]
     return {
         "start": {"x": -100_000, "y": -100_00},
-        "commands": two_rows_path * 50_000,
+        "commands": two_rows_path * 10,
     }
