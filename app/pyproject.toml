@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["IoanaPopa"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+flask = "^3.1.0"
+sqlalchemy = "^2.0.36"
+psycopg2 = "^2.9.10"
+connexion = {extras = ["swagger-ui"], version = "^3.1.0"}
+sqlalchemy-utils = "^0.41.2"
+python-dotenv = "^1.0.1"
+uvicorn = "^0.34.0"
+a2wsgi = "^1.10.7"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+black = "^24.10.0"
+flake8 = "^7.1.1"
+mypy = "^1.14.0"
+sqlalchemy-stubs = "^0.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

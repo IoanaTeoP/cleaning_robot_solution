@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: "Cleaning Robot API"
+  description: "An API for simulating a robot cleaning a grid"
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+paths:
+  /tibber-developer-test/enter-path:
+    post:
+      operationId: "app.cleaning_robot.path_calculation.api.post_path_calculation"
+      tags:
+        - "Path Calculation"
+      summary: "Calculate unique points for a given path"
+      requestBody:
+        description: "Path followed by the robot"
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "robot_path"
+              $ref: "#/components/schemas/PathCalculationPOST"
+      responses:
+        "201":
+          description: "Path calculated"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathCalculation"
+
+components:
+  schemas:
+    Command:
+      type: object
+      required:
+        - direction
+        - steps
+      properties:
+        direction:
+          type: string
+          enum:
+            - east
+            - north
+            - west
+            - south
+        steps:
+          type: integer
+          format: int64
+
+    PathCalculationPOST:
+      type: object
+      required:
+        - start
+        - commands
+      properties:
+        start:
+          type: object
+          required:
+            - x
+            - y
+          properties:
+            x:
+              type: integer
+              format: int64
+            y:
+              type: integer
+              format: int64
+        commands:
+          type: array
+          items:
+            $ref: "#/components/schemas/Command"
+
+    PathCalculation:
+      type: object
+      required:
+        - timestamp
+        - commands
+        - result
+        - duration
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        commands:
+            type: integer
+            format: int64
+        result:
+          type: integer
+          format: int64
+        duration:
+          type: number
