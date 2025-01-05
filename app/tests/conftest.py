@@ -35,4 +35,4 @@ def cleanup_db():
 def db_session():
     with session_context() as session:
         session.expire_on_commit = False
-    yield session
+        yield session

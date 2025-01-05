@@ -12,8 +12,6 @@ from app.cleaning_robot.path_calculation.grid_helpers import (
 class PlacesStructure:
     def __init__(self):
         """
-        total_steps: int <- increases with steps number every iteration
-        overlapping_steps: int <- increases if there is an interval overlap
         vertical_segments = {
             x1: [[y1, y2], ..., [yn, ym]]
         }
@@ -21,7 +19,7 @@ class PlacesStructure:
             y1: [[x1, x2], ...[xn, xm]]
         }
         """
-        self.total_steps = 0
+        self.total_places = 0
         self.intersections = 0
         self.vertical_segments = defaultdict(list)
         self.horizontal_segments = defaultdict(list)
@@ -118,6 +116,6 @@ class PlacesStructure:
         # Case when robot is stationary, hasn't moved and stayed in exactly 1 point
         if not self.horizontal_segments and not self.vertical_segments:
             return 1
-        total_places = self._compute_unique_places_on_axis()
+        self.total_places = self._compute_unique_places_on_axis()
         self.intersections = self._compute_axes_intersections()
-        return total_places - self.intersections
+        return self.total_places - self.intersections
