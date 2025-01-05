@@ -1,12 +1,14 @@
 import time
-from app.cleaning_robot.path_calculation.robot_cleaning_simulator import RobotCleaningSimulator
+from app.cleaning_robot.path_calculation.robot_cleaning_simulator import (
+    RobotCleaningSimulator,
+)
 
 
 class TestRobotCleaningSimilator:
-    def test_memory_load_full_grid(self, memory_load_robot_path):
-        simulator = RobotCleaningSimulator(memory_load_robot_path)
+    def test_load_max_grid_of_full_rows(self, memory_load_max_grid_rows):
+        simulator = RobotCleaningSimulator(memory_load_max_grid_rows)
         start = time.time()
         result = simulator.get_unique_places()
         end = time.time()
-        duration = '{:.6f}'.format(end-start)
-        assert result
+        assert end - start < 1
+        assert result == 200_001 * 2 * 2_500 + 1

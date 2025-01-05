@@ -8,7 +8,8 @@ from app.tests.fixtures import (  # noqa
     with_zero_steps_robot_path,
     with_loop_robot_path,
     one_complex_robot_path,
-    memory_load_robot_path,
+    memory_load_max_grid_rows,
+    snake_robot_path_on_rows,
 )
 
 
@@ -34,4 +35,4 @@ def cleanup_db():
 def db_session():
     with session_context() as session:
         session.expire_on_commit = False
-    yield session
+        yield session

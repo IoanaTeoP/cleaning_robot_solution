@@ -44,9 +44,22 @@ def with_loop_robot_path():
         {"direction": "west", "steps": 1},
         {"direction": "south", "steps": 1},
     ]
+    return {"start": {"x": 10, "y": 50}, "commands": loop * 100}
+
+
+@pytest.fixture
+def snake_robot_path_on_rows():
     return {
-        "start": {"x": 10, "y": 50},
-        "commands": loop*100
+        "start": {"x": -1, "y": -1},
+        "commands": [
+            {"direction": "east", "steps": 2},
+            {"direction": "north", "steps": 1},
+            {"direction": "west", "steps": 2},
+            {"direction": "north", "steps": 1},
+            {"direction": "east", "steps": 2},
+            {"direction": "north", "steps": 1},
+            {"direction": "west", "steps": 2},
+        ],
     }
 
 
@@ -55,22 +68,22 @@ def one_complex_robot_path():
     return {
         "start": {"x": 1, "y": 2},
         "commands": [
-        {"direction": "east", "steps": 1},
-        {"direction": "south", "steps": 3},
-        {"direction": "west", "steps": 2},
-        {"direction": "south", "steps": 1},
-        {"direction": "east", "steps": 1},
-        {"direction": "north", "steps": 1},
-        {"direction": "west", "steps": 1},
-        {"direction": "north", "steps": 2},
-        {"direction": "west", "steps": 1},
-        {"direction": "east", "steps": 4},
-        ]
+            {"direction": "east", "steps": 1},
+            {"direction": "south", "steps": 3},
+            {"direction": "west", "steps": 2},
+            {"direction": "south", "steps": 1},
+            {"direction": "east", "steps": 1},
+            {"direction": "north", "steps": 1},
+            {"direction": "west", "steps": 1},
+            {"direction": "north", "steps": 2},
+            {"direction": "west", "steps": 1},
+            {"direction": "east", "steps": 4},
+        ],
     }
 
 
 @pytest.fixture
-def memory_load_robot_path():
+def memory_load_max_grid_rows():
     two_rows_path = [
         {"direction": "east", "steps": 200_000},
         {"direction": "north", "steps": 1},
@@ -78,6 +91,6 @@ def memory_load_robot_path():
         {"direction": "north", "steps": 1},
     ]
     return {
-        "start": {"x": -100_000, "y": -100_00},
-        "commands": two_rows_path * 10,
+        "start": {"x": -100_000, "y": -100_000},
+        "commands": two_rows_path * 2_500,
     }

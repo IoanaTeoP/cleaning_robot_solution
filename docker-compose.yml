@@ -3,13 +3,21 @@ services:
   app:
     build: ./app
     ports:
-      - 8000:8000
+      - 8000:5000
     volumes:
       - "./app:/app"
     links:
       - postgres
     environment:
       - SQLALCHEMY_URL=postgresql://postgres:postgres@postgres:5432/cleaning_robot
+  test_app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.test
+    links:
+      - postgres
+    environment:
+      - SQLALCHEMY_URL=postgresql://postgres:postgres@postgres:5432/cleaning_robot_test
   postgres:
     image: postgres:14.1-alpine
     restart: always
