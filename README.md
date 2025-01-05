@@ -6,7 +6,7 @@
 
 `cd app`
 
-Ideally with a python version manager, install Python distribution ^3.10
+Ideally with a python version manager, install Python distribution 3.13.1
 
 `pyenv install 3.13.1` [Pyenv installation](https://github.com/pyenv/pyenv#installation)
 
